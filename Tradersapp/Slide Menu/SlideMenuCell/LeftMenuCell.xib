@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="LeftMenuCell" customModule="Tradersapp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vo2-k3-xRY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oyl-0c-DAz">
+                                <rect key="frame" x="68" y="5" width="244" height="50"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                <color key="textColor" red="0.25882352941176473" green="0.2627450980392157" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf.png" translatesAutoresizingMaskIntoConstraints="NO" id="pt0-Bu-F58">
+                                <rect key="frame" x="32" y="19" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="73T-sg-qb7"/>
+                                    <constraint firstAttribute="width" constant="22" id="tA1-4l-A6S"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Oyl-0c-DAz" secondAttribute="bottom" constant="5" id="105-yY-dPj"/>
+                            <constraint firstItem="Oyl-0c-DAz" firstAttribute="top" secondItem="vo2-k3-xRY" secondAttribute="top" constant="5" id="3az-c1-eSL"/>
+                            <constraint firstAttribute="trailing" secondItem="Oyl-0c-DAz" secondAttribute="trailing" constant="8" id="7uw-jw-1Wl"/>
+                            <constraint firstItem="pt0-Bu-F58" firstAttribute="centerX" secondItem="vo2-k3-xRY" secondAttribute="centerX" constant="-117" id="Ksh-M5-8ez"/>
+                            <constraint firstAttribute="trailing" secondItem="Oyl-0c-DAz" secondAttribute="trailing" constant="8" id="SGm-Sb-UIG"/>
+                            <constraint firstItem="pt0-Bu-F58" firstAttribute="centerY" secondItem="vo2-k3-xRY" secondAttribute="centerY" id="Uwe-kB-ghr"/>
+                            <constraint firstAttribute="bottom" secondItem="Oyl-0c-DAz" secondAttribute="bottom" constant="5" id="Zzq-ZL-I07"/>
+                            <constraint firstItem="Oyl-0c-DAz" firstAttribute="top" secondItem="vo2-k3-xRY" secondAttribute="top" constant="5" id="dIK-G5-NpW"/>
+                            <constraint firstItem="pt0-Bu-F58" firstAttribute="leading" secondItem="vo2-k3-xRY" secondAttribute="leading" constant="32" id="jln-RR-7bA"/>
+                            <constraint firstItem="Oyl-0c-DAz" firstAttribute="leading" secondItem="pt0-Bu-F58" secondAttribute="trailing" constant="14" id="xAO-7o-N70"/>
+                            <constraint firstItem="Oyl-0c-DAz" firstAttribute="leading" secondItem="pt0-Bu-F58" secondAttribute="trailing" constant="14" id="xRk-1v-hzl"/>
+                            <constraint firstAttribute="trailing" secondItem="Oyl-0c-DAz" secondAttribute="trailing" constant="8" id="yEz-sj-KT4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="vo2-k3-xRY" secondAttribute="bottom" constant="-0.5" id="12i-Jj-Eg0"/>
+                    <constraint firstAttribute="trailing" secondItem="vo2-k3-xRY" secondAttribute="trailing" id="46v-oa-n24"/>
+                    <constraint firstItem="vo2-k3-xRY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JVY-Ft-EnF"/>
+                    <constraint firstItem="vo2-k3-xRY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aYV-P9-tkx"/>
+                    <constraint firstAttribute="bottom" secondItem="vo2-k3-xRY" secondAttribute="bottom" constant="-0.5" id="nRl-sh-ciB"/>
+                    <constraint firstItem="vo2-k3-xRY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oIK-UD-87o"/>
+                    <constraint firstItem="vo2-k3-xRY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sCQ-5T-1g3"/>
+                    <constraint firstAttribute="trailing" secondItem="vo2-k3-xRY" secondAttribute="trailing" id="z5H-FE-LcD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="leftmenuimg" destination="pt0-Bu-F58" id="Jqz-I7-98I"/>
+                <outlet property="leftmenutitlelbl" destination="Oyl-0c-DAz" id="upg-Ut-7TW"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="leaf.png" width="16" height="16"/>
+    </resources>
+</document>

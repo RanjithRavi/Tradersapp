@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DashboardCell" customModule="Tradersapp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="390"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="260" height="390"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odb-V2-xBP">
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="390"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="almonds-berries-bowls-461359.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5rh-N6-49l">
+                                <rect key="frame" x="0.0" y="0.0" width="260" height="390"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNA-SJ-0ah">
+                                <rect key="frame" x="20" y="325" width="220" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="rWp-L8-sIH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 Metrics to track" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bx6-bK-JXF">
+                                <rect key="frame" x="20" y="348" width="220" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="33e-dJ-xZu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bNA-SJ-0ah" firstAttribute="leading" secondItem="Odb-V2-xBP" secondAttribute="leading" constant="20" id="2D7-sB-cI2"/>
+                            <constraint firstAttribute="trailing" secondItem="bx6-bK-JXF" secondAttribute="trailing" constant="20" id="4Nv-e0-aZW"/>
+                            <constraint firstItem="bx6-bK-JXF" firstAttribute="top" secondItem="bNA-SJ-0ah" secondAttribute="bottom" constant="2" id="E9Q-BI-1Yc"/>
+                            <constraint firstItem="5rh-N6-49l" firstAttribute="leading" secondItem="Odb-V2-xBP" secondAttribute="leading" id="JTX-eS-T2D"/>
+                            <constraint firstAttribute="bottom" secondItem="5rh-N6-49l" secondAttribute="bottom" id="PbF-nU-dXW"/>
+                            <constraint firstItem="bx6-bK-JXF" firstAttribute="leading" secondItem="Odb-V2-xBP" secondAttribute="leading" constant="20" id="dDC-Zq-ecb"/>
+                            <constraint firstItem="5rh-N6-49l" firstAttribute="top" secondItem="Odb-V2-xBP" secondAttribute="top" id="f1g-Ly-PaP"/>
+                            <constraint firstAttribute="trailing" secondItem="5rh-N6-49l" secondAttribute="trailing" id="qox-Al-vmN"/>
+                            <constraint firstAttribute="bottom" secondItem="bx6-bK-JXF" secondAttribute="bottom" constant="21" id="ufQ-Kc-eT4"/>
+                            <constraint firstAttribute="trailing" secondItem="bNA-SJ-0ah" secondAttribute="trailing" constant="20" id="xXB-6f-fHt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Odb-V2-xBP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Cwc-aQ-sgO"/>
+                <constraint firstItem="Odb-V2-xBP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DAg-KJ-i5f"/>
+                <constraint firstAttribute="trailing" secondItem="Odb-V2-xBP" secondAttribute="trailing" id="Fam-c5-d2e"/>
+                <constraint firstItem="Odb-V2-xBP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IJW-WC-atW"/>
+                <constraint firstAttribute="trailing" secondItem="Odb-V2-xBP" secondAttribute="trailing" id="TX9-S6-gHK"/>
+                <constraint firstItem="Odb-V2-xBP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YlU-s2-XRH"/>
+                <constraint firstAttribute="bottom" secondItem="Odb-V2-xBP" secondAttribute="bottom" id="tEc-SI-aQ0"/>
+                <constraint firstAttribute="bottom" secondItem="Odb-V2-xBP" secondAttribute="bottom" id="uWS-aJ-Xec"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="bgimage" destination="5rh-N6-49l" id="OGq-Sw-V9e"/>
+                <outlet property="innerview" destination="Odb-V2-xBP" id="Esf-3o-Bdd"/>
+                <outlet property="titlelbl" destination="bNA-SJ-0ah" id="s9A-XX-Btj"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="almonds-berries-bowls-461359.jpg" width="5472" height="3648"/>
+    </resources>
+</document>

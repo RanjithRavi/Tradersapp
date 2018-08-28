@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FilterCell" customModule="Tradersapp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PIL-xO-Z2d">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdv-aH-YP2">
+                        <rect key="frame" x="3" y="3" width="114" height="34"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Foq-hU-9ZV">
+                                <rect key="frame" x="2" y="2" width="110" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.95686274509803926" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Foq-hU-9ZV" secondAttribute="bottom" constant="2" id="DNP-Ze-zqq"/>
+                            <constraint firstItem="Foq-hU-9ZV" firstAttribute="top" secondItem="zdv-aH-YP2" secondAttribute="top" constant="2" id="JpX-hg-31A"/>
+                            <constraint firstItem="Foq-hU-9ZV" firstAttribute="leading" secondItem="zdv-aH-YP2" secondAttribute="leading" constant="2" id="cl1-gL-99k"/>
+                            <constraint firstAttribute="trailing" secondItem="Foq-hU-9ZV" secondAttribute="trailing" constant="2" id="rqP-eh-eW0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zdv-aH-YP2" secondAttribute="bottom" constant="3" id="3ox-F2-Zgb"/>
+                <constraint firstItem="zdv-aH-YP2" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="4NK-jJ-NwK"/>
+                <constraint firstItem="PIL-xO-Z2d" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="90D-dg-rAV"/>
+                <constraint firstItem="zdv-aH-YP2" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="CTu-a5-lt2"/>
+                <constraint firstAttribute="bottom" secondItem="PIL-xO-Z2d" secondAttribute="bottom" id="OOU-ET-eJl"/>
+                <constraint firstItem="PIL-xO-Z2d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="a2v-eU-5Hw"/>
+                <constraint firstAttribute="trailing" secondItem="PIL-xO-Z2d" secondAttribute="trailing" id="fuE-oN-KVd"/>
+                <constraint firstAttribute="trailing" secondItem="zdv-aH-YP2" secondAttribute="trailing" constant="3" id="g5b-I3-ZaM"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="bgview" destination="PIL-xO-Z2d" id="dRd-Lu-3EO"/>
+                <outlet property="innerbg" destination="zdv-aH-YP2" id="F1E-8q-ufi"/>
+                <outlet property="titlelbl" destination="Foq-hU-9ZV" id="xxB-ZN-WzI"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

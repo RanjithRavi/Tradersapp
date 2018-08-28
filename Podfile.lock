@@ -1,0 +1,44 @@
+PODS:
+  - DropDown (2.3.2)
+  - IQKeyboardManagerSwift (5.0.0)
+  - MXParallaxHeader (0.6.1)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
+  - RangeSeekSlider (1.7.0)
+  - SDWebImage (4.4.1):
+    - SDWebImage/Core (= 4.4.1)
+  - SDWebImage/Core (4.4.1)
+  - SlideMenuControllerSwift (4.0.0)
+
+DEPENDENCIES:
+  - DropDown
+  - IQKeyboardManagerSwift (= 5.0.0)
+  - MXParallaxHeader
+  - NVActivityIndicatorView
+  - RangeSeekSlider
+  - SDWebImage
+  - SlideMenuControllerSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DropDown
+    - IQKeyboardManagerSwift
+    - MXParallaxHeader
+    - NVActivityIndicatorView
+    - RangeSeekSlider
+    - SDWebImage
+    - SlideMenuControllerSwift
+
+SPEC CHECKSUMS:
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
+  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
+  MXParallaxHeader: 858c403532ed933b381556a81ce333d7065ad182
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
+  RangeSeekSlider: 0386c5a9aa5ebcb2fa5238e8a627280cf46c7c0a
+  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
+
+PODFILE CHECKSUM: 7f2af359b0782eb4ac7a465991e80d9305db98c7
+
+COCOAPODS: 1.5.3
