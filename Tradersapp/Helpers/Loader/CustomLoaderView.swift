@@ -23,10 +23,10 @@ class CustomLoaderView: NSObject {
             view.bringSubview(toFront: activityIndicatorView)
             return
         } else {
-            let height:CGFloat = 90.0
-            let Width:CGFloat = 90.0
-            let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 50, y: 50, width: Width, height: height),
-                                                                type: .ballSpinFadeLoader)
+            let height:CGFloat = 80.0
+            let Width:CGFloat = 80.0
+            let activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 60, y: 60, width: Width, height: height),
+                                                                type: .circleStrokeSpin)
             activityIndicatorView.padding = 10
             activityIndicatorView.layer.cornerRadius = 5
             //activityIndicatorView.layer.borderColor = UIColor.init(white: 0.27, alpha: 0.7).cgColor

@@ -10,14 +10,41 @@ import UIKit
 import IQKeyboardManagerSwift
 import SlideMenuControllerSwift
 
+var userid :String!
+var useremail :String!
+var useruid :String!
+var usertype :String!
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        userid = ""
+        useremail = ""
+        useruid = ""
+        useruid = ""
+        let UserDefault = UserDefaults.standard
+        
+        if userid == ""{
+            if UserDefault.value(forKey: "id") != nil
+            {
+                userid = UserDefault.value(forKey: "id") as? String
+                useremail = UserDefault.value(forKey: "email") as? String
+                useruid = UserDefault.value(forKey: "uid") as? String
+                usertype = UserDefault.value(forKey: "utype") as? String
+            }
+            else
+            {
+                print(userid)
+                print(useremail)
+                print(useruid)
+                print(usertype)
+            }
+        }
         
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         
