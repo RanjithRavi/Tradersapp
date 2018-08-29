@@ -21,6 +21,7 @@ class OTPViewController: UIViewController ,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.OTPVerification()
         fingerprint()
         
         otp1TF.underlined()
@@ -60,14 +61,11 @@ class OTPViewController: UIViewController ,UITextFieldDelegate {
             context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Check Device Owner", reply: { (success, error) in
                 if success {
                     DispatchQueue.main.async {
-                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                        
-                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TTabBarViewController
-                        self.navigationController?.pushViewController(nextViewController, animated: true)
+                        self.pushviewcontroller()
                     }
                 }else {
                     DispatchQueue.main.async {
-                        print("Authentication was error")
+                        self.alertview(alertstring: "Authentication was error")
                     }
                 }
             })
@@ -115,16 +113,98 @@ class OTPViewController: UIViewController ,UITextFieldDelegate {
     
     func validateotp(){
         if otp1TF.text != "" && otp2TF.text != "" && otp3TF.text != "" && otp4TF.text != ""{
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TTabBarViewController
-            self.navigationController?.pushViewController(nextViewController, animated: true)
+            if currentReachabilityStatus != .notReachable{
+                CustomLoaderView.addLoadIcon(self.view)
+                //self.OTPVerification()
+            }
+            else{
+                self.alertview(alertstring: "No Internet Connection")
+            }
         }
         else{
-            let alert = UIAlertController(title: "Error", message: "Please Check your OTP", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.alertview(alertstring: "Please Check your OTP")
         }
+    }
+    
+    func OTPVerification(){
+        var parmeters = [String:String]()
+        parmeters = ["id":userid!,"utype":usertype!,"val_token":"6117648"]
+        
+        var jsondata = NSData()
+        do{
+            jsondata = try JSONSerialization.data(withJSONObject: parmeters, options: .prettyPrinted) as NSData
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        
+        let url = URL(string: "https://latertraderapp.herokuapp.com/api/v1/verifications")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsondata as Data
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else{
+                print(error!)
+                return
+            }
+            if response != nil{
+                print(response!)
+            }
+            do{
+                let jsondic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                DispatchQueue.main.async {
+                    CustomLoaderView.removeLoadIcon(self.view)
+                    if (jsondic as? NSArray) != nil{
+                        print(jsondic)
+                    }
+                    else{
+                        let dict = jsondic as! NSDictionary
+                        if dict["error"] != nil {
+                            print(dict["error"] as! String)
+                            self.alertview(alertstring: dict["error"] as! String)
+                        }
+                        else {
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String)
+                            userid = "\((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)"
+                            useruid = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String
+                            usertype = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String
+                            useremail = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String
+                            let userdefault = UserDefaults.standard
+                            userdefault.set(useruid, forKey: "uid")
+                            userdefault.set(userid, forKey: "id")
+                            userdefault.set(usertype, forKey: "utype")
+                            userdefault.set(useremail, forKey: "email")
+                            self.pushviewcontroller()
+                        }
+                    }
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+                self.alertview(alertstring: "Please Check Your Internet Connection")
+            }
+        }
+        task.resume()
+    }
+    
+    func alertview(alertstring: String!){
+        let alert = UIAlertController(title: "Error", message: alertstring, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func pushviewcontroller(){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TTabBarViewController
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
 }

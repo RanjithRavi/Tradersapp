@@ -76,11 +76,7 @@ class LoginViewController: UIViewController {
             }
             else
             {
-                let alert = UIAlertController(title: "Alert", message: "No Internet Connection.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Alert"), style: .default, handler: { _ in
-                    NSLog("The \"OK\" alert occured.")
-                }))
-                self.present(alert, animated: true, completion: nil)
+                self.alertview(alertstring: "No Internet Connection")
                 
             }
            /* UIView.defaultAnimation({
@@ -145,7 +141,6 @@ class LoginViewController: UIViewController {
                     else{
                         let dict = jsondic as! NSDictionary
                         if dict["success"] != nil {
-                            print((dict["errors"] as! NSArray).object(at: 0) as! String)
                             self.alertview(alertstring: (dict["errors"] as! NSArray).object(at: 0) as! String)
                         }
                         else {
@@ -160,7 +155,7 @@ class LoginViewController: UIViewController {
                             let userdefault = UserDefaults.standard
                             userdefault.set(useruid, forKey: "uid")
                             userdefault.set(userid, forKey: "id")
-                            userdefault.set(usertype, forKey: "email")
+                            userdefault.set(usertype, forKey: "utype")
                             userdefault.set(useremail, forKey: "email")
                             self.pushviewcontroller()
                         }
@@ -169,6 +164,7 @@ class LoginViewController: UIViewController {
             }
             catch{
                 print(error.localizedDescription)
+                self.alertview(alertstring: "Please Check Your Internet Connection")
             }
         }
         task.resume()

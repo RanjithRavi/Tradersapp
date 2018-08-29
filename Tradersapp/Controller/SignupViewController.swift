@@ -156,11 +156,182 @@ class SignupViewController: UIViewController {
         }
         else{
             
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "TabBar") as! TTabBarViewController
-            self.navigationController?.pushViewController(nextViewController, animated: true)
+            if usertypeLbl.text == "Buyer"{
+                if currentReachabilityStatus != .notReachable{
+                    CustomLoaderView.addLoadIcon(self.view)
+                    self.buyersignup()
+                }
+                else{
+                    self.alertview(alertstring: "No Internet Connection")
+                }
+            }else if usertypeLbl.text == "Seller"{
+                if currentReachabilityStatus != .notReachable{
+                    CustomLoaderView.addLoadIcon(self.view)
+                    self.sellersignup()
+                }
+                else{
+                    self.alertview(alertstring: "No Internet Connection")
+                }
+            }
         }
+    }
+    
+    func buyersignup(){
+        var parmeters = [String:String]()
+        parmeters = ["email":self.emailTF.text!,"password":self.passwordTF.text!,"password_confirmation":self.passwordTF.text!,"utype":self.usertypeLbl.text!,"confirm_success_url": ""]
+        
+        var jsondata = NSData()
+        do{
+            jsondata = try JSONSerialization.data(withJSONObject: parmeters, options: .prettyPrinted) as NSData
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        
+        let url = URL(string: "https://latertraderapp.herokuapp.com/api/v1/auth")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("wwwww", forHTTPHeaderField: "access-token")
+        request.setValue("Bearer", forHTTPHeaderField: "token-type")
+        request.setValue("xxxxx", forHTTPHeaderField: "client")
+        request.setValue("yyyyy", forHTTPHeaderField: "expiry")
+        request.setValue("zzzzz", forHTTPHeaderField: "uid")
+        request.httpBody = jsondata as Data
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else{
+                print(error!)
+                return
+            }
+            if response != nil{
+                print(response!)
+            }
+            do{
+                let jsondic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                DispatchQueue.main.async {
+                    CustomLoaderView.removeLoadIcon(self.view)
+                    if (jsondic as? NSArray) != nil{
+                        print(jsondic)
+                    }
+                    else{
+                        let dict = jsondic as! NSDictionary
+                        if dict["status"] as! String == "error" {
+                            print(((dict["errors"] as! NSDictionary).value(forKey: "full_messages") as! NSArray).object(at: 0) as! String)
+                            self.alertview(alertstring: ((dict["errors"] as! NSDictionary).value(forKey: "full_messages") as! NSArray).object(at: 0) as! String)
+                        }
+                        else {
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String)
+                            userid = "\((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)"
+                            useruid = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String
+                            usertype = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String
+                            useremail = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String
+                            let userdefault = UserDefaults.standard
+                            userdefault.set(useruid, forKey: "uid")
+                            userdefault.set(userid, forKey: "id")
+                            userdefault.set(usertype, forKey: "utype")
+                            userdefault.set(useremail, forKey: "email")
+                            self.pushviewcontroller()
+                        }
+                    }
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+                self.alertview(alertstring: "Please Check Your Internet Connection")
+            }
+        }
+        task.resume()
+    }
+    
+    func sellersignup(){
+        var parmeters = [String:String]()
+        parmeters = ["email":self.emailTF.text!,"password":self.passwordTF.text!,"password_confirmation":self.passwordTF.text!,"utype":self.usertypeLbl.text!,"confirm_success_url": ""]
+        
+        var jsondata = NSData()
+        do{
+            jsondata = try JSONSerialization.data(withJSONObject: parmeters, options: .prettyPrinted) as NSData
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        
+        let url = URL(string: "https://latertraderapp.herokuapp.com/api/v1/auth")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("wwwww", forHTTPHeaderField: "access-token")
+        request.setValue("Bearer", forHTTPHeaderField: "token-type")
+        request.setValue("xxxxx", forHTTPHeaderField: "client")
+        request.setValue("yyyyy", forHTTPHeaderField: "expiry")
+        request.setValue("zzzzz", forHTTPHeaderField: "uid")
+        request.httpBody = jsondata as Data
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard error == nil else{
+                print(error!)
+                return
+            }
+            if response != nil{
+                print(response!)
+            }
+            do{
+                let jsondic = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                
+                DispatchQueue.main.async {
+                    CustomLoaderView.removeLoadIcon(self.view)
+                    if (jsondic as? NSArray) != nil{
+                        print(jsondic)
+                    }
+                    else{
+                        let dict = jsondic as! NSDictionary
+                        if dict["status"] as! String == "error" {
+                            print(((dict["errors"] as! NSDictionary).value(forKey: "full_messages") as! NSArray).object(at: 0) as! String)
+                            self.alertview(alertstring: ((dict["errors"] as! NSDictionary).value(forKey: "full_messages") as! NSArray).object(at: 0) as! String)
+                        }
+                        else {
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)
+                            print((dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String)
+                            userid = "\((dict.value(forKey: "data") as! NSDictionary).value(forKey: "id") as! NSNumber)"
+                            useruid = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "uid") as! String
+                            usertype = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "utype") as! String
+                            useremail = (dict.value(forKey: "data") as! NSDictionary).value(forKey: "email") as! String
+                            let userdefault = UserDefaults.standard
+                            userdefault.set(useruid, forKey: "uid")
+                            userdefault.set(userid, forKey: "id")
+                            userdefault.set(usertype, forKey: "utype")
+                            userdefault.set(useremail, forKey: "email")
+                            self.pushviewcontroller()
+                        }
+                    }
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+                self.alertview(alertstring: "Please Check Your Internet Connection")
+            }
+        }
+        task.resume()
+    }
+    
+    func alertview(alertstring: String!){
+        let alert = UIAlertController(title: "Error", message: alertstring, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func pushviewcontroller(){
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "OTPViewController") as! OTPViewController
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     func phonevalidate(value: String) -> Bool {
